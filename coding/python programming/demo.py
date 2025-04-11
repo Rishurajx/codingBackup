@@ -1,6 +1,12 @@
-# Create a dictionary with 10 elements
-my_dict = {1: 'one',2: 'two',3: 'three', 4: 'four', 5: 'five',6: 'six',7: 'seven',8: 'eight',9: 'nine',10: 'ten'}
-# Print elements at odd positions
-for key in my_dict:
-    if key % 2 != 0:
-        print(f"Key: {key}, Value: {my_dict[key]}")
+# l1=[1,2,3,4,5,6,7,8,9]
+# print(l1)
+# t1=(1,2,3,4,5)
+# print(t1)
+# s1={1,2,3,4,5,6,7,8,9}
+# print(s1)
+# d1={'a':1,'b':2,'c':3,'d':4,'e':5,'f':6}
+# print(d1)
+
+
+d2={'a':1,"b":2,'c':{1:1,2:12,3:15},'d':'a'}
+print(d2["c"][3])
