@@ -1,5 +1,4 @@
 package oopsNew;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.Random;
 class sps{
@@ -7,10 +6,8 @@ class sps{
     Random ran=new Random();
     int key;
     int comp;
-    sps(){
-        comp= ran.nextInt(1,4);
-    }
     void getterSetter(){
+        comp= ran.nextInt(1,4);
         System.out.println();
         System.out.println("          Enter 1, 2 or 3         ");
         System.out.println();
@@ -30,7 +27,7 @@ class sps{
             System.out.println("Xo Match Draw!!!");
             System.out.println();
             System.out.println();
-            System.out.println("Try again buddy.........");
+            System.out.println("Lets try again buddy.........");
             System.out.println("-----------------------------------------------");
             return false;
         }
@@ -44,21 +41,25 @@ class sps{
         }
     }
     void display(){
-        String arr[]={"STONE","PAPER","SCISSOR"};
+        String []arr={"STONE","PAPER","SCISSOR"};
         System.out.println("      "+arr[key-1]+"    VS     "+arr[comp-1]);
         System.out.println();
         System.out.println();
-        System.out.println("I was choosen ("+arr[comp-1]+") and you choosed ("+arr[key-1]+")");
+        System.out.println("I was chosen ("+arr[comp-1]+") and you chose ("+arr[key-1]+")");
     }
-}
-public class stonePaperScissor {
-    public static void main(String[] args) {
-        sps obj = new sps();
+    void playGame(){
         boolean condition=false;
         while(!condition) {
-            obj.getterSetter();
-            obj.display();
-            condition=obj.check();
+            getterSetter();
+            display();
+            condition=check();
         }
+    }
+}
+
+public class stonePaperScissor {
+    public static void main(String[] args) {
+        sps obj=new sps();
+        obj.playGame();
     }
 }
