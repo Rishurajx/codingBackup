@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      padding: 10px 20px;
+      color: white;
+    }
+    .top-bar .search-container {
+      flex-grow: 1;
+      margin-right: 20px;
+    }
+    .top-bar input[type="text"] {
+      width: 80%;
+      padding: 8px 15px;
+      font-size: 16px;
+      border-radius: 100px;
+      border: none;
+    }
+    .top-bar .icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .top-bar img {
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+      gap: 30px;
+    }
+    .product-image-box {
+      width: 55%;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      gap: 15px;
+    }
+    .thumbnail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .thumbnail-list img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.2s ease;
+    }
+    .thumbnail-list img:hover {
+      border: 2px solid #ff7043;
+    }
+    .slider-wrapper {
+      flex: 1;
+    }
+    .slider-wrapper img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .price-box {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff3e0;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+    .mrp {
+      text-decoration: line-through;
+      color: #757575;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    .specs-box {
+      width: 40%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .specs-box h2 {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+    .spec-option {
+      margin-bottom: 15px;
+    }
+    .spec-option label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .spec-option select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+    .buttons-container {
+      margin-top: 25px;
+    }
+    .add-to-cart {
+      background-color: #ff7043;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .buy-now {
+      margin-top: 10px;
+      background-color: #43a047;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .buy-now:hover {
+      background-color: #2e7d32;
+    }
+    .add-to-cart:hover {
+      background-color: #e64a19;
+    }
+    .info-section {
+      padding: 25px;
+      background-color: #ffffff;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .info-section h2 {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .info-section p {
+      line-height: 1.6;
+      color: #555;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+    .footer-section h3 {
+      color: #ff7043;
+      margin-top: 0;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+    .footer-section a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #ff7043;
+    }
+    .newsletter input {
+      padding: 10px;
+      width: 100%;
+      border-radius: 30px;
+      border: none;
+      margin-bottom: 10px;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      background-color: #ff7043;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar with Search -->
+<div class="top-bar">
+  <div class="search-container">
+    <input type="text" placeholder="🔍 Search for products...">
+  </div>
+  <div class="icons">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/home.png" alt="Home" title="Home">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/user.png" alt="Login" title="Login">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/shopping-cart.png" alt="Cart" title="Cart">
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+  <!-- Product Image Section -->
+  <div class="product-image-box">
+    <div class="thumbnail-list">
+      <img src="imageError.jpg" onclick="selectImage(0)">
+      <img src="imageError.jpg" onclick="selectImage(1)">
+      <img src="imageError.jpg" onclick="selectImage(2)">
+    </div>
+    <div class="slider-wrapper">
+      <img id="productImage" src="imageError.jpg" alt="Product Image">
+      <!-- Price below the image in its own box -->
+      <div class="price-box">
+        <span class="price">₹87999</span>
+        <span class="mrp">₹99999</span>
+        <p style="margin-top: 8px; color: #43a047; font-weight: bold;">up to 15% OFF</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Specifications in a separate box on the right -->
+  <div class="specs-box">
+    <h2>Product Specifications</h2>
+    
+    <div class="spec-option">
+      <label for="color">Color:</label>
+      <select id="color">
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+    </div>
+    
+    <div class="spec-option">
+      <label for="size">Size:</label>
+      <select id="size">
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+      </select>
+    </div>
+    
+    <div class="spec-option">
+      <label for="material">Material:</label>
+      <select id="material">
+        <option>Cotton</option>
+        <option>Polyester</option>
+        <option>Wool</option>
+        <option>Silk</option>
+      </select>
+    </div>
+    
+    <div class="buttons-container">
+      <button class="add-to-cart">
+        <span>🛍</span> Add to Cart
+      </button>
+      <button class="buy-now">
+        <span>✓</span> Buy Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Info Section -->
+<div class="info-section">
+  <h2>Product Details</h2>
+  <p>This premium product is crafted with exceptional attention to detail, using only the finest materials to ensure durability and comfort. The ergonomic design provides a perfect fit for all body types, while the stylish appearance makes it suitable for any occasion.</p>
+  
+  <p>Key features include:</p>
+  <ul>
+    <li>High-quality, breathable fabric for all-day comfort</li>
+    <li>Reinforced stitching for enhanced durability</li>
+    <li>Eco-friendly production process</li>
+    <li>Available in multiple colors and sizes</li>
+    <li>Easy maintenance - machine washable</li>
+  </ul>
+  
+  <p>Whether you're dressing for work, a casual outing, or a special event, this versatile product will exceed your expectations. With its perfect blend of style and functionality, it's an essential addition to any wardrobe.</p>
+</div>
+
+<!-- Footer Section -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Customer Support</h3>
+      <ul>
+        <li>Help Center</li>
+        <li>Returns</li>
+        <li>Track Order</li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">YouTube</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Policies</h3>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms & Conditions</li>
+        <li>Shipping Policy</li>
+        <li>Return Policy</li>
+      </ul>
+    </div>
+
+    <div class="footer-section newsletter">
+      <h3>Subscribe to our Newsletter</h3>
+      <p>Get the latest updates and offers.</p>
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 ShopSmart. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const images = [
+    "imageError.jpg",
+    "imageError.jpg",
+    "imageError.jpg"
+  ];
+  
+  let index = 0;
+
+  function showImage() {
+    document.getElementById("productImage").src = images[index];
+  }
+
+  function nextImage() {
+    index = (index + 1) % images.length;
+    showImage();
+  }
+
+  function prevImage() {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+  }
+
+  function selectImage(i) {
+    index = i;
+    showImage();
+  }
+
+  window.onload = showImage;
+</script>
+
+</body>
+</html>

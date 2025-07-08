@@ -1,6 +1,11 @@
-num=[5,3,7,2,8,9,1,2,7,3,9,6,4,7]
-for i in range(1,len(num)-1):
-    for j in range(0,len(num)-1):
-        if num[i]<num[j]:
-            num[i],num[i-1]=num[i-1],num[i]
+num=[5,8,2,6,4,9,1,3,7,0]
+for i in range(1,len(num)):
+    key=num[i]
+    j=i-1
+    for j in range(i-1,-1,-1):
+        if key<num[j]:
+            key=num[j]
+            num[j],num[j+1]=num[j+1],num[j]
+        else:
+            break
 print(num)
