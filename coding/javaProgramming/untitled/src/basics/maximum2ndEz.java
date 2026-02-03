@@ -1,3 +1,5 @@
+package basics;
+
 import java.util.Scanner;
 public class maximum2ndEz {
     public static void main(String[] args) {

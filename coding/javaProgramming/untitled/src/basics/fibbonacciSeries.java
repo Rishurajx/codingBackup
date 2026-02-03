@@ -1,3 +1,5 @@
+package basics;
+
 public class fibbonacciSeries {
     public static void main(String[] args) {
         int fir=0;

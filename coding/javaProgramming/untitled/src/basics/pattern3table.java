@@ -1,3 +1,5 @@
+package basics;
+
 public class pattern3table {
     public static void main(String[] args) {
         int sum=0;

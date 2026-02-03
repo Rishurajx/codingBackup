@@ -1,3 +1,5 @@
+package basics;
+
 public class recursion {
     public static int add(int num){
         if(num==1){

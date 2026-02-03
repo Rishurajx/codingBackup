@@ -1,3 +1,5 @@
+package basics;
+
 import java.util.Scanner;
 public class maximum2nd {
     public static double max(double[] aray) {
